@@ -36,5 +36,17 @@ Feature: Login Functionality
       | Employee130 | asde123     |
       | saasEe13    | asde123     |
       | saasEe130   | Employee123 |
+  Scenario Outline: user can not login with invalid credentials
+    When Go to login page
+    And Enter referred credentials "<username>" "<password>"
+    And Click on the login button
+    Then user should not be login and  see the message
+
+    Examples:
+
+      | username    | password    |
+      | Employee130 | asde123     |
+      | saasEe13    | asde123     |
+      | saasEe130   | Employee123 |
 
 
