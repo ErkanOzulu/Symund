@@ -13,7 +13,7 @@ public class DashboardPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "//*[@id=\"expanddiv\"]/ul/li[4]/a")
+    @FindBy(xpath = "//li[@data-id='logout']")
     public WebElement logOut;
 
     @FindBy(xpath = "//h2[contains(.,'Good afternoon')]")
