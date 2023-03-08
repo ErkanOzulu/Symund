@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class LoginPage extends dashboardPage{
+public class LoginPage extends DashboardPage{
 
     public LoginPage() {
         PageFactory.initElements(Driver.getDriver(),this);
@@ -34,9 +34,9 @@ public class LoginPage extends dashboardPage{
     }
 
 
-    @FindBy(xpath = "//nav[@id='expanddiv']/ul//a")
-    public List<WebElement>list;
-
+    @FindBy(xpath = "//*[@id=\"expanddiv\"]/ul/li[2]")
+    public WebElement list;
+///*[@id="expanddiv"]/ul/li
 
 
 

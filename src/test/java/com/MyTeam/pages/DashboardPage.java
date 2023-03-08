@@ -5,9 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class dashboardPage {
+import java.util.List;
 
-    public dashboardPage() {
+public class DashboardPage {
+
+    public DashboardPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -16,5 +18,9 @@ public class dashboardPage {
 
     @FindBy(xpath = "//h2[contains(.,'Good afternoon')]")
     public WebElement header;
+@FindBy(xpath = "//div[@id='settings']//nav//li")
+    public List<WebElement> list;
 
+    @FindBy(css = "img[width='32']")
+    public WebElement image;
 }

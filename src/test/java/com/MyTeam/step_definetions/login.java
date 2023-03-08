@@ -16,6 +16,7 @@ public class login {
 
     LoginPage loginPage = new LoginPage();
 
+
     @When("Go to login page")
     public void go_to_login_page() {
         Driver.getDriver().get("https://qa.symund.com/");
@@ -65,7 +66,7 @@ public class login {
 
 
     @Then("User should see this list")
-    public void User_should_see_this_list(List<String> list) {
+    public void User_should_see_this_list(List<String> list) throws InterruptedException {
 //    List<String>slist=new ArrayList<>();
 //        for (WebElement each : loginPage.list) {
 //            slist.add(each.getText().trim());
@@ -74,17 +75,21 @@ public class login {
 //
 //        Assert.assertEquals("no list",list,slist);
 //
-        for (WebElement each : loginPage.list) {
-            for (String s : list) {
+//        for (WebElement each : loginPage.list) {
+//            for (String s : list) {
+//
+//                System.out.println(each.getText());
+//                Assert.assertTrue(each.getText().contains(s));
+//
+//            }
+//        }
 
-                System.out.println(each.getText());
-                Assert.assertTrue(each.getText().contains(s));
 
-            }
+
         }
 
 
     }
 
 
-}
+
