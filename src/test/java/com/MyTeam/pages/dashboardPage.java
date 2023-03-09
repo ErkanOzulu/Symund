@@ -17,4 +17,7 @@ public class dashboardPage {
     @FindBy(xpath = "//h2[contains(.,'Good afternoon')]")
     public WebElement header;
 
+    @FindBy(id="settings")
+    public WebElement accountSetting;
+
 }

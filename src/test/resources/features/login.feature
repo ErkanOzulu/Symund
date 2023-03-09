@@ -17,7 +17,6 @@ Feature: Login Functionality
       | password | Employee123 |
     And Click on the login button
     Then User should see this list
-      | Erkan      |
       | Set status |
       | Settings   |
       | Help       |

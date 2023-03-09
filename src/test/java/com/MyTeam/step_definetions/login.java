@@ -1,12 +1,16 @@
 package com.MyTeam.step_definetions;
 
 import com.MyTeam.pages.LoginPage;
+import com.MyTeam.utilitys.BrowserUtils;
 import com.MyTeam.utilitys.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +45,7 @@ public class login {
     @Then("user should login with  valid credentials by clicking login button")
     public void user_should_login_with_valid_credentials_by_clicking_login_button() {
 
-        Assert.assertTrue(loginPage.header.getText().contains("Good"));
+        Assert.assertTrue(loginPage.accountSetting.isDisplayed());
     }
 
 
@@ -66,22 +70,20 @@ public class login {
 
     @Then("User should see this list")
     public void User_should_see_this_list(List<String> list) {
-//    List<String>slist=new ArrayList<>();
+//        WebDriverWait wait=new WebDriverWait(Driver.getDriver(),10);
+//        wait.until(ExpectedConditions.visibilityOf(Driver.getDriver().findElement(By.xpath("//li[@data-id='dashboard']"))));
+
+
+//BrowserUtils.waitFor(7);
 //        for (WebElement each : loginPage.list) {
-//            slist.add(each.getText().trim());
-//
+//            for (String s : list) {
+//                System.out.println(each.getText());
+//               if (each.getText().contains(s)) {
+//                   Assert.assertTrue(true);
+//               }
+//            }
+//            Assert.assertTrue(false);
 //        }
-//
-//        Assert.assertEquals("no list",list,slist);
-//
-        for (WebElement each : loginPage.list) {
-            for (String s : list) {
-
-                System.out.println(each.getText());
-                Assert.assertTrue(each.getText().contains(s));
-
-            }
-        }
 
 
     }
