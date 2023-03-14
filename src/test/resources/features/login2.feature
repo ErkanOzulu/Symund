@@ -1,7 +1,7 @@
 Feature: Login Functionality
   As a user, I should be able to login.
 
- @valid
+
   Scenario: Login with valid credentials
     When Go to login page
     And Enter valid username "Employee130" in username field

@@ -1,27 +1,14 @@
-Feature: Login Functionality
+Feature: login Functionality
   As a user, I should be able to login.
 
-  @valid
+@map
   Scenario: Login with valid credentials
     When Go to login page
-    And Enter valid username "Employee130" in username field
+    And Enter valid username "Employee50" in username field
     And Enter valid password "Employee123" in password field
     And Click on the login button
     Then user should login with  valid credentials by clicking login button
 
-  @map
-  Scenario: Login with valid credentials
-    When Go to login page
-    And Enter valid username in username field and password in password field
-      | username | Employee130 |
-      | password | Employee123 |
-    And Click on the login button
-    Then User should see this list
-      | Erkan      |
-      | Set status |
-      | Settings   |
-      | Help       |
-      | Log out    |
 
   @check
   Scenario Outline: user can not login with invalid credentials

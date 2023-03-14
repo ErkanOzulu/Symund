@@ -22,14 +22,16 @@ public class LoginPage extends dashboardPage{
     public WebElement logInButton;
     @FindBy(id="lost-password")
     public WebElement forgotPasswordLink;
+
     @FindBy(id="reset-password-submit")
     public WebElement resetButton;
+
     @FindBy(xpath = "//*[@id=\"body-login\"]/div[1]/div/main/div/div/form/fieldset/p[3]")
     public WebElement wrongMessage;
 
     public void login(String username, String password){
         inputUsername.sendKeys(username);
-      inputPassword.sendKeys(password);
+        inputPassword.sendKeys(password);
         logInButton.click();
     }
 

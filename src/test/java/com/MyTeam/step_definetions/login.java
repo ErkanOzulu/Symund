@@ -23,7 +23,7 @@ public class login {
 
     @When("Enter valid username {string} in username field")
     public void enter_valid_username_in_username_field(String userName) {
-        loginPage.inputUsername.sendKeys(userName);
+             loginPage.inputUsername.sendKeys(userName);
 
     }
 
