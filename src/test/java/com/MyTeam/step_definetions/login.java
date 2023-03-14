@@ -1,5 +1,6 @@
 package com.MyTeam.step_definetions;
 
+import com.MyTeam.pages.DashboardPage;
 import com.MyTeam.pages.LoginPage;
 import com.MyTeam.utilitys.BrowserUtils;
 import com.MyTeam.utilitys.Driver;
@@ -7,8 +8,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,6 +23,7 @@ import java.util.Map;
 public class login {
 
     LoginPage loginPage = new LoginPage();
+    DashboardPage dashboardPage = new DashboardPage();
 
     @When("Go to login page")
     public void go_to_login_page() {
@@ -42,16 +47,17 @@ public class login {
         loginPage.logInButton.click();
     }
 
-    @Then("user should login with  valid credentials by clicking login button")
-    public void user_should_login_with_valid_credentials_by_clicking_login_button() {
+    @Then("Verify that user can login")
+    public void Verify_that_user_can_login() {
 
-        Assert.assertTrue(loginPage.accountSetting.isDisplayed());
+        Assert.assertTrue(dashboardPage.accountSetting.isDisplayed());
     }
 
 
-    @Then("user should not be login and  see the message")
-    public void userShouldNotBeLoginAndSeeTheMessage() {
-        Assert.assertTrue(loginPage.wrongMessage.isDisplayed());
+    @Then("user should not be login and  see the message {string}")
+    public void userShouldNotBeLoginAndSeeTheMessage(String message) {
+      //  Assert.assertTrue(loginPage.wrongMessage.getText().contains(message));
+        Assert.assertEquals(message,loginPage.wrongMessage.getText());
     }
 
     @And("Enter referred credentials {string} {string}")
@@ -61,6 +67,7 @@ public class login {
         loginPage.inputPassword.sendKeys(password);
 
     }
+
     @And("Enter valid username in username field and password in password field")
     public void enterValidUsernameInUsernameFieldAndPasswordInPasswordField(Map<String, String> credentials) {
         loginPage.inputUsername.sendKeys(credentials.get("username"));
@@ -68,25 +75,18 @@ public class login {
     }
 
 
-    @Then("User should see this list")
-    public void User_should_see_this_list(List<String> list) {
-//        WebDriverWait wait=new WebDriverWait(Driver.getDriver(),10);
-//        wait.until(ExpectedConditions.visibilityOf(Driver.getDriver().findElement(By.xpath("//li[@data-id='dashboard']"))));
-
-
-//BrowserUtils.waitFor(7);
-//        for (WebElement each : loginPage.list) {
-//            for (String s : list) {
-//                System.out.println(each.getText());
-//               if (each.getText().contains(s)) {
-//                   Assert.assertTrue(true);
-//               }
-//            }
-//            Assert.assertTrue(false);
-//        }
-
-
+    @And("hit enter key word")
+    public void hitEnterKeyWord() {
+        loginPage.inputPassword.sendKeys(Keys.ENTER);
     }
 
 
+    @Then("user should not be login and  see the pop-up message {string}")
+    public void userShouldNotBeLoginAndSeeThePopUpMessage(String popupMessage) {
+        Alert alert=Driver.getDriver().switchTo().alert();
+        System.out.println(alert.getText());
+        Assert.assertEquals(popupMessage,alert.getText());
+
+
+    }
 }

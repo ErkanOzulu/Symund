@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class LoginPage extends dashboardPage{
+public class LoginPage {
 
     public LoginPage() {
         PageFactory.initElements(Driver.getDriver(),this);
@@ -24,7 +24,7 @@ public class LoginPage extends dashboardPage{
     public WebElement forgotPasswordLink;
     @FindBy(id="reset-password-submit")
     public WebElement resetButton;
-    @FindBy(xpath = "//*[@id=\"body-login\"]/div[1]/div/main/div/div/form/fieldset/p[3]")
+    @FindBy(xpath = "//p[@class='warning wrongPasswordMsg']")
     public WebElement wrongMessage;
 
     public void login(String username, String password){
