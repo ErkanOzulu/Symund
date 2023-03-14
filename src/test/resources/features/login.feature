@@ -36,4 +36,47 @@ Feature: Login Functionality
       | saasEe13    | asde123     |
       | saasEe130   | Employee123 |
 
+Feature:  I want to login into the site with valid data and Invalid data
+  Background:
+    Given I navigate to the Website
+  Scenario: Login as a new sign-up user with valid data
+    When I entered the user name
+    And I entered the password
+    And click on the sign-in button
+    Then validate user successfully logged-in
+    But log-in button is not present
+  Scenario: Login as a new sign-up user with invalid data
+    When I entered an invalid user name
+    And I entered the password
+    And click on the sign-in button
+    Then Error message should display
+    But Re-login option be available
 
+
+  #Declarative Example:
+
+  Scenario: Verify login
+
+    Given user navigate to the Website
+
+    When user enters credentials
+
+    Then the user clicks on the sign-in button
+
+    Then validate the title after login
+
+  #Imperative Example:
+
+  Scenario: Verify login
+
+    Given I navigate to the Website
+
+    When I enter “username”
+
+    When I enter “password”
+
+    When I check the “Remember me” check box
+
+    Then the user clicks on the sign-in button
+
+    Then Validate the title after login
