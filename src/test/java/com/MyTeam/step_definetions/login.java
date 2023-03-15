@@ -2,22 +2,13 @@ package com.MyTeam.step_definetions;
 
 import com.MyTeam.pages.DashboardPage;
 import com.MyTeam.pages.LoginPage;
-import com.MyTeam.utilitys.BrowserUtils;
 import com.MyTeam.utilitys.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class login {
@@ -56,9 +47,18 @@ public class login {
 
     @Then("user should not be login and  see the message {string}")
     public void userShouldNotBeLoginAndSeeTheMessage(String message) {
-      //  Assert.assertTrue(loginPage.wrongMessage.getText().contains(message));
-        Assert.assertEquals(message,loginPage.wrongMessage.getText());
+
+
+        try {
+            Assert.assertEquals(message, loginPage.wrongMessage.getText());
+        } catch (Exception e) {
+            Assert.assertFalse("There is no message",true);
+        }
+
+
+
     }
+
 
     @And("Enter referred credentials {string} {string}")
     public void enterReferredCredentials(String username, String password) {
@@ -83,9 +83,82 @@ public class login {
 
     @Then("user should not be login and  see the pop-up message {string}")
     public void userShouldNotBeLoginAndSeeThePopUpMessage(String popupMessage) {
-        Alert alert=Driver.getDriver().switchTo().alert();
-        System.out.println(alert.getText());
-        Assert.assertEquals(popupMessage,alert.getText());
+
+        String message = loginPage.inputUsername.getAttribute("validationMessage");
+
+        if (loginPage.inputUsername.getAttribute("required").equals("required")) {
+            Assert.assertEquals(popupMessage, message);
+        }
+
+        if (loginPage.inputPassword.getAttribute("required").equals("required")) {
+
+            Assert.assertEquals(popupMessage, message);
+
+        }
+
+
+        //https://stackoverflow.com/questions/51156670/selenium-java-how-to-locate-browser-validation-message
+
+        //https://stackoverflow.com/questions/51156670/selenium-java-how-to-locate-browser-validation-message
+    }
+
+    @And("Enter username {string} in username field")
+    public void enterUsernameInUsernameField(String username) {
+        loginPage.inputUsername.sendKeys(username);
+
+    }
+
+
+    @And("Enter password {string} in password field")
+    public void enterPasswordInPasswordField(String password) {
+        loginPage.inputPassword.sendKeys(password);
+    }
+
+    @Then("User can see the password in a form of dots by default")
+    public void userCanSeeThePasswordInAFormOfDotsByDefault() {
+        Assert.assertTrue(loginPage.inputPassword.getAttribute("type").equals("password"));
+
+    }
+
+    @And("Click eye sign in password field")
+    public void clickEyeSignInPasswordField() {
+
+        loginPage.eyeSign.click();
+
+    }
+
+    @Then("user should be able to see the password explicitly")
+    public void userShouldBeAbleToSeeThePasswordExplicitly() {
+        Assert.assertEquals("text", loginPage.inputPassword.getAttribute("type"));
+    }
+
+    @When("Check Forget password? link on the login page")
+    public void checkForgetPasswordLinkOnTheLoginPage() {
+        loginPage.forgotPasswordLink.isDisplayed();
+
+    }
+
+    @And("Click  Forget password? link")
+    public void clickForgetPasswordLink() {
+        loginPage.forgotPasswordLink.click();
+    }
+
+    @Then("User can see the Reset Password button on the next page")
+    public void userCanSeeTheResetPasswordButtonOnTheNextPage() {
+
+        loginPage.resetButton.isDisplayed();
+    }
+
+    @When("Check username and password field")
+    public void checkUsernameAndPasswordField() {
+        loginPage.inputUsername.isDisplayed();
+        loginPage.inputPassword.isDisplayed();
+    }
+
+    @Then("user can see expected placeholders in related field")
+    public void userCanSeeExpectedPlaceholdersInRelatedField(Map<String, String> placeHolder) {
+        Assert.assertEquals(loginPage.inputPassword.getAttribute("placeholder"), placeHolder.get("in_password"));
+        Assert.assertEquals(loginPage.inputUsername.getAttribute("placeholder"), placeHolder.get("in_username"));
 
 
     }

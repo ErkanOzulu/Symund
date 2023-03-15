@@ -10,7 +10,7 @@ import java.util.List;
 public class LoginPage {
 
     public LoginPage() {
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(id = "user")
@@ -18,31 +18,28 @@ public class LoginPage {
 
     @FindBy(id = "password")
     public WebElement inputPassword;
-    @FindBy(id="submit-form")
+    @FindBy(id = "submit-form")
     public WebElement logInButton;
-    @FindBy(id="lost-password")
+    @FindBy(css = "#lost-password")
     public WebElement forgotPasswordLink;
-    @FindBy(id="reset-password-submit")
+
+    @FindBy(css = "#reset-password-submit")
     public WebElement resetButton;
     @FindBy(xpath = "//p[@class='warning wrongPasswordMsg']")
     public WebElement wrongMessage;
 
-    public void login(String username, String password){
+    @FindBy(className = "toggle-password")
+    public WebElement eyeSign;
+
+    public void login(String username, String password) {
         inputUsername.sendKeys(username);
-      inputPassword.sendKeys(password);
+        inputPassword.sendKeys(password);
         logInButton.click();
     }
 
 
     @FindBy(xpath = "//nav[@id='expanddiv']/ul//a")
-    public List<WebElement>list;
-
-
-
-
-
-
-
+    public List<WebElement> list;
 
 
 }
