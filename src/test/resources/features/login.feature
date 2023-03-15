@@ -6,8 +6,8 @@ Feature: Login Functionality
   @SYMU10-329
   Scenario: Login with valid credentials by clicking login button
     When Go to login page
-    And Enter valid username "Employee130" in username field
-    And Enter valid password "Employee123" in password field
+    And Enter valid username in username field
+    And Enter valid password in password field
     And Click on the login button
     Then Verify that user can login
 
