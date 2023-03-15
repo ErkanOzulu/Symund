@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class dashboardPage {
+public class DashboardPage extends LoginPage{
 
-    public dashboardPage() {
+    public DashboardPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -16,5 +16,8 @@ public class dashboardPage {
 
     @FindBy(xpath = "//h2[contains(.,'Good afternoon')]")
     public WebElement header;
+
+    @FindBy(id="settings")
+    public WebElement accountSetting;
 
 }
