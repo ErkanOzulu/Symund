@@ -12,12 +12,19 @@ public class DashboardPage extends LoginPage{
     }
 
     @FindBy(xpath = "//*[@id=\"expanddiv\"]/ul/li[4]/a")
-    public WebElement logOut;
+    public WebElement logOutButton;
 
     @FindBy(xpath = "//h2[contains(.,'Good afternoon')]")
     public WebElement header;
 
     @FindBy(id="settings")
     public WebElement accountSetting;
+
+    public void LogOut(){
+
+        accountSetting.click();
+        logOutButton.click();
+
+    }
 
 }
