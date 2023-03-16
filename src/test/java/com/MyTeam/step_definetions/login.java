@@ -85,18 +85,18 @@ public class login {
     @Then("user should not be login and  see the pop-up message {string}")
     public void userShouldNotBeLoginAndSeeThePopUpMessage(String popupMessage) {
 
-        String message = loginPage.inputUsername.getAttribute("validationMessage");
+
 
         if (loginPage.inputUsername.getAttribute("required").equals("required")) {
-            Assert.assertEquals(popupMessage, message);
+            String message=loginPage.inputUsername.getAttribute("validationMessage");
+              Assert.assertEquals(popupMessage, message);
         }
+
 
         if (loginPage.inputPassword.getAttribute("required").equals("required")) {
-
+            String message=loginPage.inputPassword.getAttribute("validationMessage");
             Assert.assertEquals(popupMessage, message);
-
-        }
-
+    }
 
         //https://stackoverflow.com/questions/51156670/selenium-java-how-to-locate-browser-validation-message
 
