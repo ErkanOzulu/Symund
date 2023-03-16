@@ -39,12 +39,12 @@ Feature: Login Functionality
   @SYMU10-332
   Scenario Outline: user can not login with blank credentials
     When Go to login page
-    And Enter referred credentials "<username>" "<password>"
+    And Enter referred credentials "<user>" "<password>"
     And Click on the login button
-    Then user should not be login and  see the pop-up message "Please fill out this field."
+    Then "<user>" should not be login and  see the pop-up message "Please fill out this field."
 
     Examples:
-      | username    | password    |
+      | user        | password    |
       | Employee130 |             |
       | employee130 |             |
       |             |             |
