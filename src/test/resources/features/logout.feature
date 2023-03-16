@@ -5,13 +5,13 @@ Feature:Log out functionality
   Background:
     Given user is logged in and on the dashboard page
 
-  Scenario: Verify that User can log out and ends up in login page
+  Scenario:User can log out and ends up in login page
     When click the account name dropdown in the top right corner
     And check the Log out button in the dropdown
     And click Log out button
-    Then user should be able to logout and ends up on the login page
+    Then Verify that user should be able to logout and ends up on the login page
   @wip
-  Scenario: Verify that user shouldn't be able to go to  home page again
+  Scenario: User shouldn't be able to go to  home page again
   by clicking step back button after successfully logged out
     Given user is logged out
     When Click the step back button in the top left corner

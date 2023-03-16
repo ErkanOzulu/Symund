@@ -35,12 +35,11 @@ public class logout {
         dashboardPage.logOutButton.click();
     }
 
-    @Then("user should be able to logout and ends up on the login page")
-    public void user_should_be_able_to_logout_and_ends_up_on_the_login_page() {
-
+    @Then("Verify that user should be able to logout and ends up on the login page")
+    public void verifyThatUserShouldBeAbleToLogoutAndEndsUpOnTheLoginPage() {
         Assert.assertTrue(Driver.getDriver().getTitle().equals("Symund - QA"));
-
     }
+
 
 
     @Given("user is logged out")
@@ -60,4 +59,6 @@ public class logout {
         Assert.assertTrue(Driver.getDriver().getTitle().equals("Symund - QA"));
 
     }
+
+
 }
