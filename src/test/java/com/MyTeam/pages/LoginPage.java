@@ -1,5 +1,6 @@
 package com.MyTeam.pages;
 
+import com.MyTeam.utilitys.ConfigurationReader;
 import com.MyTeam.utilitys.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,9 +32,9 @@ public class LoginPage {
     @FindBy(className = "toggle-password")
     public WebElement eyeSign;
 
-    public void login(String username, String password) {
-        inputUsername.sendKeys(username);
-        inputPassword.sendKeys(password);
+    public void login() {
+        inputUsername.sendKeys(ConfigurationReader.getProperty("username"));
+        inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
         logInButton.click();
     }
 
