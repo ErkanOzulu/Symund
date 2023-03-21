@@ -57,7 +57,6 @@ public class login {
         }
 
 
-
     }
 
 
@@ -83,6 +82,8 @@ public class login {
 
     @Then("{string} should not be login and  see the pop-up message {string}")
     public void shouldNotBeLoginAndSeeThePopUpMessage(String username, String popupMessage) {
+
+
 
         System.out.println(loginPage.inputUsername.getAttribute("required"));
 
