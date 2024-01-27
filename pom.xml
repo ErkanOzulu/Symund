@@ -25,11 +25,11 @@
                     <threadCount>4</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <testFailureIgnore>true</testFailureIgnore>
-                <includes>
-                    <include>
-                        **/CukesRunner*.java
-                    </include>
-                </includes>
+                    <includes>
+                        <include>
+                            **/CukesRunner*.java
+                        </include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
@@ -38,12 +38,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>5.3.1</version>
+            <version>4.12.1</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
