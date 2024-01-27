@@ -2,6 +2,7 @@ package com.MyTeam.step_definetions;
 
 import com.MyTeam.pages.DashboardPage;
 import com.MyTeam.pages.LoginPage;
+import com.MyTeam.utilitys.ConfigurationReader;
 import com.MyTeam.utilitys.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -18,18 +19,18 @@ public class login {
 
     @When("Go to login page")
     public void go_to_login_page() {
-        Driver.getDriver().get("https://qa.symund.com/");
+        Driver.getDriver().get(ConfigurationReader.getProperty("symund.url"));
     }
 
-    @When("Enter valid username {string} in username field")
-    public void enter_valid_username_in_username_field(String userName) {
-        loginPage.inputUsername.sendKeys(userName);
+    @When("Enter valid username in username field")
+    public void enter_valid_username_in_username_field() {
+        loginPage.inputUsername.sendKeys(ConfigurationReader.getProperty("username"));
 
     }
 
-    @When("Enter valid password {string} in password field")
-    public void enter_valid_password_in_password_field(String password) {
-        loginPage.inputPassword.sendKeys(password);
+    @When("Enter valid password in password field")
+    public void enter_valid_password_in_password_field() {
+        loginPage.inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
 
     }
 
@@ -56,7 +57,6 @@ public class login {
         }
 
 
-
     }
 
 
@@ -80,26 +80,23 @@ public class login {
         loginPage.inputPassword.sendKeys(Keys.ENTER);
     }
 
+    @Then("{string} should not be login and  see the pop-up message {string}")
+    public void shouldNotBeLoginAndSeeThePopUpMessage(String username, String popupMessage) {
 
-    @Then("user should not be login and  see the pop-up message {string}")
-    public void userShouldNotBeLoginAndSeeThePopUpMessage(String popupMessage) {
 
-        String message = loginPage.inputUsername.getAttribute("validationMessage");
 
-        if (loginPage.inputUsername.getAttribute("required").equals("required")) {
+        System.out.println(loginPage.inputUsername.getAttribute("required"));
+
+        if (username.isEmpty()) {
+            String message = loginPage.inputUsername.getAttribute("validationMessage");
+            Assert.assertEquals(popupMessage, message);
+        } else {
+            String message = loginPage.inputPassword.getAttribute("validationMessage");
             Assert.assertEquals(popupMessage, message);
         }
 
-        if (loginPage.inputPassword.getAttribute("required").equals("required")) {
-
-            Assert.assertEquals(popupMessage, message);
-
-        }
-
-
         //https://stackoverflow.com/questions/51156670/selenium-java-how-to-locate-browser-validation-message
 
-        //https://stackoverflow.com/questions/51156670/selenium-java-how-to-locate-browser-validation-message
     }
 
     @And("Enter username {string} in username field")
@@ -162,4 +159,6 @@ public class login {
 
 
     }
+
+
 }
