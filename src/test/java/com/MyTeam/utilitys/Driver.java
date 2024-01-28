@@ -3,6 +3,7 @@ package com.MyTeam.utilitys;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -10,6 +11,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -82,6 +84,35 @@ public class Driver {
                         e.printStackTrace();
                     }
                     break;
+
+//                case "remote-chrome":
+//                    try {
+//                        // assign your grid server address
+//                        String gridAddress = "54.234.152.90";
+//                        URL url = new URL("http://"+ gridAddress + ":4444/wd/hub");
+//                        ChromeOptions chromeOptions = new ChromeOptions();
+//                        chromeOptions.addArguments("--start-maximized");
+//                        driverPool.set(new RemoteWebDriver(url, chromeOptions));
+//                        //driverPool.set(new RemoteWebDriver(new URL("http://0.0.0.0:4444/wd/hub"),desiredCapabilities));
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    break;
+//                case "remote-firefox":
+//                    try {
+//                        // assign your grid server address
+//                        String gridAddress = "34.239.154.115";
+//                        URL url = new URL("http://"+ gridAddress + ":4444/wd/hub");
+//                        FirefoxOptions firefoxOptions=new FirefoxOptions();
+//                        firefoxOptions.addArguments("--start-maximized");
+//                        driverPool.set(new RemoteWebDriver(url, firefoxOptions));
+//                        //driverPool.set(new RemoteWebDriver(new URL("http://0.0.0.0:4444/wd/hub"),desiredCapabilities));
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    break;
                 case "saucelab-chrome":
                     try{
                         URL url = new URL("https://oauth-sdetoscar-844c8:66e7117f-390e-4556-8105-07af96a01f7a@ondemand.eu-central-1.saucelabs.com:443/wd/hub");
@@ -113,6 +144,15 @@ public class Driver {
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
+                    break;
+
+                case "headless-chrome":
+                    // WebDriverManager.chromedriver().setup();
+                    ChromeOptions option = new ChromeOptions();
+                    option.addArguments("--headless=new");
+                    driverPool.set(new ChromeDriver(option));
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
 
             }
