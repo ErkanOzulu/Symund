@@ -1,4 +1,4 @@
-@SYMU10-409
+@SYMU10-409 @Logout
 Feature:Log out functionality
 
   As a user I should be able to log out.

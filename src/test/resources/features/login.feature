@@ -1,4 +1,4 @@
-@SYMU10-337
+@SYMU10-337 @Login
 Feature: Login Functionality
   As a user, I should be able to login.
 
