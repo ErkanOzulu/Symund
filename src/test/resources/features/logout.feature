@@ -6,7 +6,7 @@ Feature:Log out functionality
   Background:user is expected to be on the dashboard page
     Given user is logged in and on the dashboard page
 
-@SYMU10-407
+@SYMU10-407 @regression
   Scenario:User can log out and ends up in login page
     When click the account name dropdown in the top right corner
     And check the Log out button in the dropdown

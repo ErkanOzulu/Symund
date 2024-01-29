@@ -11,7 +11,7 @@ Feature: Login Functionality
     And Click on the login button
     Then Verify that user can login
 
-  @SYMU10-330
+  @SYMU10-330 @regression
   Scenario: Login with valid credentials  by hitting  "Enter" key from the keyboard
     When Go to login page
     And Enter valid username in username field and password in password field
